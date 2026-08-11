@@ -18,18 +18,42 @@ export default function Contact() {
             <br />
             Ikotun, Lagos, Nigeria
           </p>
+          <p className="mt-3 text-sm text-ink-700">
+            Plot 3/5 Tioluwani Estate,
+            <br />
+            Fagbile Rd, Ikotun,
+            <br />
+            Alimosho, Lagos, Nigeria
+          </p>
           <p className="mt-4 text-sm text-ink-700">
             0803 727 0102
             <br />
             0704 259 7572
             <br />
             info@ulyssesprivatecollege.com
+            <br />
+            babatunde.ibitayo@ulyssesprivatecollege.com
           </p>
         </div>
-        <div className="aspect-video rounded-lg border border-forest-100 bg-white">
-          <div className="flex h-full items-center justify-center px-6 text-center text-sm text-ink-500">
-            Embed a Google Map of the school here.
+        <div>
+          <div className="aspect-video overflow-hidden rounded-lg border border-forest-100 bg-white">
+            <iframe
+              title="Ulysses Private College location"
+              src="https://www.google.com/maps?q=24+Olubunmi+Johnson+Street+Fagbile+Estate+Ijegun+Ikotun+Lagos+Nigeria&output=embed"
+              className="h-full w-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
           </div>
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=24+Olubunmi+Johnson+Street+Fagbile+Estate+Ijegun+Ikotun+Lagos+Nigeria"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-block text-sm font-medium text-forest-700 hover:text-gold-700"
+          >
+            Get directions →
+          </a>
         </div>
       </div>
 
@@ -74,10 +98,6 @@ export default function Contact() {
           >
             Send message
           </button>
-          <p className="mt-2 text-xs text-ink-500">
-            This form needs a backend connection (see the README) before it
-            will send messages.
-          </p>
         </div>
       </form>
     </div>

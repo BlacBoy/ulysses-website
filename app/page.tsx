@@ -1,5 +1,15 @@
 import Link from "next/link";
+import Image from "next/image";
 import WaveDivider from "@/components/WaveDivider";
+import Slideshow, { type Slide } from "@/components/Slideshow";
+
+// Add your photos to /public/gallery, then list them here.
+// Each `src` must match a filename in that folder exactly (case-sensitive).
+const gallerySlides: Slide[] = [
+  { src: "/gallery/campus-1.jpg", alt: "Ulysses Private College campus" },
+  { src: "/gallery/campus-2.jpg", alt: "Students in class at Ulysses Private College" },
+  { src: "/gallery/campus-3.jpg", alt: "Ulysses Private College students and staff" },
+];
 
 const quickLinks = [
   {
@@ -83,11 +93,15 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative aspect-[4/3] w-full rounded-lg border border-cream-50/15 bg-forest-700/40">
-            <div className="flex h-full items-center justify-center px-6 text-center text-sm text-forest-100/60">
-              Replace with a photo of the school campus, students or a
-              recent event.
-            </div>
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-cream-50/15 bg-forest-700/40">
+            <Image
+              src="/gallery/welcome.png"
+              alt="Welcome to Ulysses Private College"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 576px"
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
@@ -117,10 +131,14 @@ export default function Home() {
       {/* About snippet */}
       <section className="bg-forest-50">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 md:grid-cols-2">
-          <div className="order-2 aspect-[4/3] rounded-lg border border-forest-100 bg-white md:order-1">
-            <div className="flex h-full items-center justify-center px-6 text-center text-sm text-ink-500">
-              Replace with a photo of students or the school building.
-            </div>
+          <div className="order-2 relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-forest-100 bg-white md:order-1">
+            <Image                
+              src="/gallery/lab.png"
+              alt="Lab room image"
+              fill
+              sizes="(max-width: 768px) 100vw, 576px"
+              className="object-cover"
+            />
           </div>
           <div className="order-1 md:order-2">
             <span className="eyebrow text-forest-700">About us</span>
@@ -157,6 +175,17 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Campus life slideshow */}
+      <section className="mx-auto max-w-6xl px-6 py-16">
+        <span className="eyebrow text-forest-700">Campus life</span>
+        <h2 className="mt-3 font-display text-3xl font-medium text-forest-900">
+          A look around Ulysses
+        </h2>
+        <div className="mt-8">
+          <Slideshow slides={gallerySlides} />
         </div>
       </section>
 

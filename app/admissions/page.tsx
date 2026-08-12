@@ -1,3 +1,5 @@
+import FormspreeForm from "@/components/FormspreeForm";
+
 const steps = [
   { title: "Enquire", body: "Contact the school office by phone or the form below." },
   { title: "Assessment", body: "Sit for the entrance assessment at the school." },
@@ -56,7 +58,11 @@ export default function Admissions() {
       <h2 className="mt-14 font-display text-2xl font-medium text-forest-900">
         Enquire about admissions
       </h2>
-      <form className="mt-6 grid gap-4 rounded-lg border border-forest-100 bg-white p-6 sm:grid-cols-2">
+      <FormspreeForm
+        endpoint="https://formspree.io/f/mqernogo"
+        subject="New admissions enquiry"
+        className="mt-6 grid gap-4 rounded-lg border border-forest-100 bg-white p-6 sm:grid-cols-2"
+      >
         <div className="sm:col-span-1">
           <label className="text-sm font-medium text-ink-700" htmlFor="parentName">
             Parent / guardian name
@@ -65,6 +71,7 @@ export default function Admissions() {
             id="parentName"
             name="parentName"
             type="text"
+            required
             className="mt-1 w-full rounded-md border border-forest-100 px-3 py-2 text-sm focus:border-forest-500 focus:outline-none"
           />
         </div>
@@ -76,6 +83,7 @@ export default function Admissions() {
             id="phone"
             name="phone"
             type="tel"
+            required
             className="mt-1 w-full rounded-md border border-forest-100 px-3 py-2 text-sm focus:border-forest-500 focus:outline-none"
           />
         </div>
@@ -87,6 +95,7 @@ export default function Admissions() {
             id="email"
             name="email"
             type="email"
+            required
             className="mt-1 w-full rounded-md border border-forest-100 px-3 py-2 text-sm focus:border-forest-500 focus:outline-none"
           />
         </div>
@@ -98,9 +107,12 @@ export default function Admissions() {
             id="message"
             name="message"
             rows={4}
+            required
             className="mt-1 w-full rounded-md border border-forest-100 px-3 py-2 text-sm focus:border-forest-500 focus:outline-none"
           />
         </div>
+        {/* Honeypot field: hidden from real visitors, catches simple spam bots */}
+        <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
         <div className="sm:col-span-2">
           <button
             type="submit"
@@ -108,12 +120,8 @@ export default function Admissions() {
           >
             Submit enquiry
           </button>
-          <p className="mt-2 text-xs text-ink-500">
-            This form needs a backend connection (see the README) before it
-            will send messages.
-          </p>
         </div>
-      </form>
+      </FormspreeForm>
     </div>
   );
 }

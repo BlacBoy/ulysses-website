@@ -17,9 +17,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Ulysses Private College | A.K.A. Pacesetter",
-  description:
-    "Ulysses Private College is a private secondary school in Ijegun, Ikotun, Lagos, committed to academic excellence and character formation.",
+     title: "Ulysses Private College | A.K.A. Pacesetter",
+     description: 
+		"Ulysses Private College is a private secondary school in Ijegun, Ikotun, Lagos, committed to academic excellence and character formation.",
+     manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({

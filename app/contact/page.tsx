@@ -1,3 +1,5 @@
+import FormspreeForm from "@/components/FormspreeForm";
+
 export const metadata = { title: "Contact | Ulysses Private College" };
 
 export default function Contact() {
@@ -18,21 +20,12 @@ export default function Contact() {
             <br />
             Ikotun, Lagos, Nigeria
           </p>
-          <p className="mt-3 text-sm text-ink-700">
-            Plot 3/5 Tioluwani Estate,
-            <br />
-            Fagbile Rd, Ikotun,
-            <br />
-            Alimosho, Lagos, Nigeria
-          </p>
           <p className="mt-4 text-sm text-ink-700">
             0803 727 0102
             <br />
             0704 259 7572
             <br />
             info@ulyssesprivatecollege.com
-            <br />
-            babatunde.ibitayo@ulyssesprivatecollege.com
           </p>
         </div>
         <div>
@@ -57,7 +50,11 @@ export default function Contact() {
         </div>
       </div>
 
-      <form className="mt-14 grid gap-4 rounded-lg border border-forest-100 bg-white p-6 sm:grid-cols-2">
+      <FormspreeForm
+        endpoint="https://formspree.io/f/mqernogo"
+        subject="New message from the contact page"
+        className="mt-14 grid gap-4 rounded-lg border border-forest-100 bg-white p-6 sm:grid-cols-2"
+      >
         <div className="sm:col-span-1">
           <label className="text-sm font-medium text-ink-700" htmlFor="name">
             Your name
@@ -66,6 +63,7 @@ export default function Contact() {
             id="name"
             name="name"
             type="text"
+            required
             className="mt-1 w-full rounded-md border border-forest-100 px-3 py-2 text-sm focus:border-forest-500 focus:outline-none"
           />
         </div>
@@ -77,6 +75,7 @@ export default function Contact() {
             id="email"
             name="email"
             type="email"
+            required
             className="mt-1 w-full rounded-md border border-forest-100 px-3 py-2 text-sm focus:border-forest-500 focus:outline-none"
           />
         </div>
@@ -88,9 +87,12 @@ export default function Contact() {
             id="message"
             name="message"
             rows={5}
+            required
             className="mt-1 w-full rounded-md border border-forest-100 px-3 py-2 text-sm focus:border-forest-500 focus:outline-none"
           />
         </div>
+        {/* Honeypot field: hidden from real visitors, catches simple spam bots */}
+        <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
         <div className="sm:col-span-2">
           <button
             type="submit"
@@ -99,7 +101,7 @@ export default function Contact() {
             Send message
           </button>
         </div>
-      </form>
+      </FormspreeForm>
     </div>
   );
 }
